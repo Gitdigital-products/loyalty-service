@@ -1,0 +1,6 @@
+src/
+├── controllers/    # Route handlers (Express)
+├── services/       # Business logic (Calculations, DB calls)
+├── models/         # TypeScript interfaces & DB schemas
+├── middleware/     # Auth & Validation
+└── routes/         # API endpoint definitions
