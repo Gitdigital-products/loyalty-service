@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel | Loyalty Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen">
+    <div class="flex">
+        <aside class="w-64 border-r border-slate-800 p-6 space-y-8 hidden md:block">
+            <h1 class="text-xl font-bold text-white flex items-center gap-2">
+                <span class="text-indigo-400">🛡️</span> AdminCenter
+            </h1>
+            <nav class="space-y-1">
+                <a href="#" class="block px-4 py-2 bg-indigo-600 rounded-lg text-sm font-semibold">Dashboard</a>
+                <a href="#" class="block px-4 py-2 text-slate-400 hover:text-white text-sm">Users</a>
+                <a href="#" class="block px-4 py-2 text-slate-400 hover:text-white text-sm">On-Chain Tx</a>
+                <a href="#" class="block px-4 py-2 text-red-400 hover:text-red-300 text-sm">Fraud Alerts (3)</a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-8">
+            <header class="flex justify-between items-center mb-10">
+                <h2 class="text-2xl font-bold">Network Overview</h2>
+                <button class="bg-indigo-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-indigo-500 transition">Pause Contract</button>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <p class="text-slate-400 text-xs font-bold uppercase">Total Points Minted</p>
+                    <p class="text-3xl font-black mt-2 text-white">4,829,100</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <p class="text-slate-400 text-xs font-bold uppercase">System Burn Rate</p>
+                    <p class="text-3xl font-black mt-2 text-emerald-400">12.4%</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-2xl border border-red-900/50">
+                    <p class="text-red-400 text-xs font-bold uppercase">Risk Alerts</p>
+                    <p class="text-3xl font-black mt-2 text-red-500">03</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden">
+                <div class="p-6 border-b border-slate-700"><h3 class="font-bold">Suspicious Activity</h3></div>
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-900/50 text-slate-400">
+                        <tr>
+                            <th class="p-4">Wallet</th>
+                            <th class="p-4">Flag</th>
+                            <th class="p-4 text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700">
+                        <tr>
+                            <td class="p-4 font-mono">8vN2...xP9q</td>
+                            <td class="p-4"><span class="text-red-400 font-medium italic">High Velocity Referral</span></td>
+                            <td class="p-4 text-right"><button class="text-indigo-400 hover:underline">Investigate</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
