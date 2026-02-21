@@ -1,0 +1,30 @@
+
+🏗️ 1. API Schema Definition (OpenAPI 3.0)
+We’ll focus on the three core pillars: Identity (Wallets), Activity (Points), and Value (Rewards).
+Core Endpoints
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /v1/accounts/{wallet} | Fetch point balance, current tier, and recent history. |
+| POST | /v1/transactions/issue | Admin only: Manually or programmatically issue points. |
+| POST | /v1/transactions/redeem | Exchange points for a specific reward ID. |
+| GET | /v1/tiers | List all loyalty tiers and their required point thresholds. |
+Proposed JSON Payload (Issue Points)
+{
+  "wallet_address": "7xKX...123",
+  "amount": 500,
+  "reason": "purchase_milestone",
+  "metadata": {
+    "order_id": "ORD-9928",
+    "campaign": "Spring_Referral_2026"
+  }
+}
+
+🛡️ Business Logic Rules
+Before we write the code, we need to agree on these constraints:
+ * Point Expiration: Do points expire after X months of inactivity?
+ * Tier Calculation: Is it based on lifetime points earned or current balance? (Standard is lifetime points to prevent users from dropping tiers when they spend).
+ * Atomic Transactions: Every point issuance must be recorded both in the database (for speed) and on-chain (for transparency).
+🛠️ Implementation Plan
+To get this into the repo, we should:
+ * Generate the Boilerplate: Create the Express/NestJS/FastAPI controllers based on the schema above.
+ * Middleware: Add a "Service-to-Service" Auth check so only your internal checkout-service can issue points.
