@@ -1,0 +1,25 @@
+We'll use a relational database to track user progress and provide historical data for the frontend.
+Core Tables
+users_loyalty
+Tracks the current state of a user.
+
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| wallet_address | VARCHAR(44) | Primary Key (Solana Address). |
+| current_balance | BIGINT | Points available to spend. |
+| lifetime_points | BIGINT | Total earned (used for Tier calculation). |
+| tier_id | INT | Foreign Key to loyalty_tiers. |
+
+points_ledger
+An immutable audit log of every point movement.
+
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| id | UUID | Unique transaction ID. |
+| wallet_address | VARCHAR(44) | Recipient. |
+| amount | BIGINT | Positive for earned, negative for spent. |
+| tx_signature | TEXT | The Solana transaction hash (link to on-chain). |
+| reason | VARCHAR | e.g., "purchase", "referral", "reward_redemption". |
+
+⚡ 4. The Indexing Logic (The "Watcher")
+We need a background worker that listens to the Solana blockchain. If a user receives points directly on-chain (or if our API succeeds), the database must stay in sync.
