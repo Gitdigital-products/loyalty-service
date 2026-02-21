@@ -1,0 +1,35 @@
+## 🐳 5. Docker Configuration (`docker-compose.yml`)
+
+Finally, let's ensure the infrastructure is reproducible:
+
+```yaml
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://user:pass@db:5432/loyalty
+      - SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: loyalty
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+
+🏁 Repository Finished!
+We have successfully built:
+ * ✅ API Layer: Express/TypeScript controllers.
+ * ✅ On-Chain Layer: Anchor/Rust smart contract for minting.
+ * ✅ Data Layer: PostgreSQL schema and indexing logic.
+ * ✅ DevOps: README with status badges and Docker orchestration.
