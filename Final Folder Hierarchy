@@ -1,0 +1,14 @@
+loyalty-service/
+├── .github/workflows/ci.yml      <-- GitHub Action
+├── programs/
+│   └── loyalty-program/
+│       └── src/lib.rs            <-- Solana Smart Contract
+├── src/
+│   ├── controllers/              <-- API Handlers
+│   ├── services/                 <-- Business & Indexer Logic
+│   ├── middleware/               <-- Auth & Validation
+│   └── index.ts                  <-- Entry Point
+├── tests/                        <-- Unit & Integration Tests
+├── docker-compose.yml            <-- Infrastructure
+├── README.md                     <-- The "Front Door" (with badges!)
+└── package.json                  <-- Node Dependencies
